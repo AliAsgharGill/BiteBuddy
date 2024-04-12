@@ -1,3 +1,35 @@
 {
-  "users": []
+  "restaurants": [
+    {
+      "id": 1,
+      "name": "Restaurant A",
+      "cuisine": "Italian",
+      "address": "123 Main St",
+      "menu": [
+        { "id": 1, "name": "Pizza Margherita", "price": 10.99 },
+        { "id": 2, "name": "Pasta Carbonara", "price": 12.99 }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "hashed_password"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "restaurantId": 1,
+      "items": [
+        { "menuItemId": 1, "quantity": 2 },
+        { "menuItemId": 2, "quantity": 1 }
+      ],
+      "status": "pending",
+      "total": 34.97
+    }
+  ]
 }
