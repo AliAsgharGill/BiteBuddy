@@ -1,9 +1,12 @@
 import "./App.css";
+import { ComplexNavbar } from "./app/components/Navabar";
+import FrameComponent9 from "./app/pages/Home/HeroPro";
 
 function App() {
   return (
-    <>
-      <h1>Hello</h1>
+    <>      
+      <ComplexNavbar />      
+      <FrameComponent9 />            
     </>
   );
 }
