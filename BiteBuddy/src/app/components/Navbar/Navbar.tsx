@@ -29,7 +29,8 @@ import {
 import { BiSolidOffer } from "react-icons/bi";
 import { IoRestaurantSharp } from "react-icons/io5";
 import { FaMapLocationDot } from "react-icons/fa6";
-
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // profile menu component
 const profileMenuItems = [
   {
@@ -151,7 +152,7 @@ function NavListMenu() {
   ));
 
   return (
-    <React.Fragment>      
+    <React.Fragment>
       <Menu allowHover open={isMenuOpen} handler={setIsMenuOpen}>
         <MenuHandler>
           <Typography as="a" href="#" variant="small" className="font-normal">
@@ -188,7 +189,6 @@ function NavListMenu() {
       <ul className="ml-6 flex w-full flex-col gap-1 lg:hidden">
         {renderItems}
       </ul>
-      
     </React.Fragment>
   );
 }
@@ -199,15 +199,17 @@ const navListItems = [
     label: "Special Offers",
     // icon: UserCircleIcon,
     icon: BiSolidOffer,
+    link: "offers",
   },
   {
-
     label: "Restaurants",
-    icon: IoRestaurantSharp ,
+    icon: IoRestaurantSharp,
+    link: "restaurants",
   },
   {
     label: "Track Order",
     icon: FaMapLocationDot,
+    link: "track",
   },
 ];
 
@@ -215,20 +217,18 @@ function NavList() {
   return (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
       <NavListMenu />
-      {navListItems.map(({ label, icon }, key) => (
-        <Typography
+      {navListItems.map(({ label, icon, link }, key) => (
+        <NavLink
           key={label}
-          as="a"
-          href="#"
-          variant="small"
+          to={link}
           color="gray"
-          className="font-medium text-blue-gray-500"
+          className="font-medium text-blue-gray-500 "
         >
           <MenuItem className="flex items-center gap-2 lg:rounded-full">
             {React.createElement(icon, { className: "h-[18px] w-[18px]" })}{" "}
-            <span className="text-gray-900"> {label}</span>
+            <span className="text-gray-900 "> {label}</span>
           </MenuItem>
-        </Typography>
+        </NavLink>
       ))}
     </ul>
   );
@@ -257,7 +257,11 @@ export function ComplexNavbar() {
           BiteBuddy
         </Typography> */}
         <div className="">
-          <img className="w-52 h-14" src="public\Images\BiteBuddy.png" />
+          <img className="w-28 h-14  sm:hidden" src="Images/BiteBuddy.png" />
+          <img
+            className="w-52 h-14 hidden sm:block"
+            src="Images/BiteBuddy.png"
+          />
         </div>
         <div className="hidden lg:block">
           <NavList />
@@ -272,9 +276,14 @@ export function ComplexNavbar() {
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
 
-        <Button size="sm" variant="text">
-          <span>Log In</span>
-        </Button>
+        <div className="space-x-2">
+          <Button size="sm" variant="outlined">
+            <span>Log In</span>
+          </Button>
+          <Button size="sm" variant="text" onClick={() => { }}>
+            <span>Register</span>
+          </Button>
+        </div>
         <ProfileMenu />
       </div>
       <Collapse open={isNavOpen} className="overflow-scroll">

@@ -1,5 +1,7 @@
 import { useQuery } from "react-query";
 import { fetchRestaurants, fetchUsers } from "../../../api/api";
+import Header from "./HeroPro";
+import Deals from "./Deals";
 
 const Home = () => {
   const {
@@ -39,8 +41,9 @@ const Home = () => {
   return (
     <>
       <div>
-        <h1>Restaurants</h1>
-        <h1>Restaurants</h1>
+        <Header />
+        <Deals />
+        
         {restaurantData &&
           restaurantData.map((restaurant: Restaurant) => (
             <p key={restaurant.id}>{restaurant.name}</p>

@@ -1,12 +1,25 @@
 import "./App.css";
-import { ComplexNavbar } from "./app/components/Navabar";
-import FrameComponent9 from "./app/pages/Home/HeroPro";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  createRoutesFromElements,
+} from "react-router-dom";
+import Layout from "./Router/Layout/Layout";
+import Home from "./app/pages/Home/Home";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index path="/" element={<Home />} />      
+    </Route>
+  )
+);
 
 function App() {
   return (
-    <>      
-      <ComplexNavbar />      
-      <FrameComponent9 />            
+    <>
+      <RouterProvider router={router} />
     </>
   );
 }

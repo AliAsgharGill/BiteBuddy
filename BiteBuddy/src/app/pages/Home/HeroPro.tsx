@@ -1,4 +1,4 @@
-const FrameComponent9: FunctionComponent = () => {
+const Header: FunctionComponent = () => {
   return (
     <div className="self-stretch flex flex-row items-start justify-start pt-0 pb-2.5 pr-0 pl-[5px] box-border max-w-full text-left text-base text-gray-300 font-poppins mt-10">
       <div className="flex-1 rounded-xl bg-gray-100 box-border flex flex-row items-start justify-between pt-[43px] pb-0 pr-0.5 pl-[55px] relative max-w-full gap-[20px] border-[1px] border-solid border-gray-700 mq850:pt-7 mq850:box-border mq1225:pl-[27px] mq1225:box-border mq1525:flex-wrap">
@@ -24,7 +24,7 @@ const FrameComponent9: FunctionComponent = () => {
                     <div className="self-stretch w-[373px] relative rounded-101xl bg-white box-border hidden max-w-full border-[1px] border-solid border-gray-400" />
                     <input
                       className="w-[119px] [border:none] [outline:none] font-poppins text-mini bg-[transparent] h-[57px] relative leading-[57px] text-gray-600 text-left inline-block whitespace-nowrap p-0 z-[5]"
-                      placeholder="e.g. EC4R 3TE"
+                      placeholder="e.g. burger..."
                       type="text"
                     />
                   </div>
@@ -43,12 +43,12 @@ const FrameComponent9: FunctionComponent = () => {
         </div>
         <div className="h-[537px] w-[914px] absolute !m-[0] right-[291px] bottom-[0px]">
           <img
-            className="absolute hidden md:block top-[186px] left-[677px] rounded-t-xl rounded-b-none w-[250px] h-[355px] object-cover z-[2]"
+            className="absolute  w-[890]:block top-[186px] left-[677px] rounded-t-xl rounded-b-none w-[250px] h-[355px] object-cover z-[2]"
             alt=""
             src="public\Images\Girl2.svg"
           />
           <img
-            className="absolute hidden md:block h-full top-[0px] bottom-[0px] left-[190px] max-h-full w-[805px] object-cover z-[3]"
+            className="absolute  w-[890]:block h-full top-[0px] bottom-[0px] left-[190px] max-h-full w-[805px] object-cover z-[3] "
             alt=""
             src="public\Images\Girl.svg"
           />
@@ -75,7 +75,7 @@ const FrameComponent9: FunctionComponent = () => {
                   src="public\Images\BiteBuddy 140  53.png"
                 />
                 <div className="w-[198px] flex flex-col items-start justify-start gap-[1px]">
-                  <div className="relative font-semibold z-[5]">
+                  <div className="relative font-semibold inline-block min-w-[101px] z-[4]">
                     We’ve Received your order!
                   </div>
                   <div className="self-stretch flex flex-row items-start justify-start">
@@ -130,7 +130,7 @@ const FrameComponent9: FunctionComponent = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-row items-start justify-start py-0 px-0.5 text-gray-600">
+                      <div className="flex flex-row items-start justify-start py-0 px-0.5 text-gray-600 ">
                         <div className="relative z-[4]">
                           Your order will be delivered shortly
                         </div>
@@ -190,4 +190,4 @@ const FrameComponent9: FunctionComponent = () => {
   );
 };
 
-export default FrameComponent9;
+export default Header;
