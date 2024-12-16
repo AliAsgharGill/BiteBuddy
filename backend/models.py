@@ -2,6 +2,9 @@ from database import Base
 from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, Text
 from sqlalchemy_utils.types import ChoiceType
 from sqlalchemy.orm import relationship
+from pydantic import BaseModel, EmailStr, constr
+from typing import List, Optional
+from datetime import datetime
 
 
 class User(Base):
@@ -12,7 +15,7 @@ class User(Base):
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
     is_staff = Column(Boolean, default=False)
-    is_active = Column(Boolean, default=True)
+    is_active = Column(Boolean, default=False)
     orders = relationship("Order", back_populates="user")
 
     def __repr__(self):
@@ -151,3 +154,55 @@ class Order(Base):
 
     def __repr__(self):
         return f"<Order {self.id}>"
+
+
+# Pydantic Models
+
+
+# Pydantic Models for User
+class UserBase(BaseModel):
+    username: str
+    email: EmailStr
+
+class UserIn(UserBase):
+    password: constr(min_length=8)  # Ensure password has a minimum length
+    class Config:
+        orm_mode = True
+
+
+class UserOut(UserBase):
+    id: int
+    username: str
+    email: EmailStr
+    is_staff: bool
+    is_active: bool
+    orders: Optional[List["OrderOut"]] = []  # Avoid circular references
+    
+    class Config:
+        orm_mode = True
+
+
+# Pydantic Models for Order
+class OrderBase(BaseModel):
+    quantity: int
+    order_status: str
+    pizza_size: str
+    pizza_flavour: str
+    pizza_veggie_options: str
+    pizza_meat_options: str
+    pizza_crust: str
+    pizza_toppings: str
+    special_instructions: Optional[str]
+
+
+class OrderIn(OrderBase):
+    user_id: int
+
+
+class OrderOut(OrderBase):
+    id: int
+    user: UserOut  # Nested user object
+
+
+# Circular References Fix
+UserOut.update_forward_refs()
